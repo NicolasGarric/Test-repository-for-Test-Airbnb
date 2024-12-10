@@ -1,0 +1,8 @@
+<h1>Liste des appartements</h1>
+<% @flats.each do |flat| %>
+  <div>
+    <h2><%= link_to flat.name, flat_path(flat) %></h2>
+    <p><%= flat.description %></p>
+    <p>Prix : <%= flat.price %>€</p>
+  </div>
+<% end %>
