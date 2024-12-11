@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_12_10_144128) do
+ActiveRecord::Schema[7.1].define(version: 2024_12_10_154800) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -39,7 +39,9 @@ ActiveRecord::Schema[7.1].define(version: 2024_12_10_144128) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.boolean "available"
+    t.bigint "user_id", null: false
     t.index ["host_id"], name: "index_flats_on_host_id"
+    t.index ["user_id"], name: "index_flats_on_user_id"
   end
 
   create_table "guests", force: :cascade do |t|
@@ -74,4 +76,5 @@ ActiveRecord::Schema[7.1].define(version: 2024_12_10_144128) do
   add_foreign_key "bookings", "guests"
   add_foreign_key "bookings", "hosts"
   add_foreign_key "flats", "hosts"
+  add_foreign_key "flats", "users"
 end

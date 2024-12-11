@@ -1,0 +1,39 @@
+<h1>Modifier un appartement</h1>
+
+<%= form_with model: @flat, local: true do |form| %>
+  <div>
+    <%= form.label :name, "Nom de l'appartement" %>
+    <%= form.text_field :name, placeholder: "Nom", required: true %>
+  </div>
+
+  <div>
+    <%= form.label :description, "Description" %>
+    <%= form.text_area :description, placeholder: "Ajoutez une description", rows: 5, required: true %>
+  </div>
+
+  <div>
+    <%= form.label :address, "Adresse" %>
+    <%= form.text_field :address, placeholder: "Adresse complète", required: true %>
+  </div>
+
+  <div>
+    <%= form.label :price, "Prix par nuit (€)" %>
+    <%= form.number_field :price, step: 0.01, placeholder: "Prix", required: true %>
+  </div>
+
+  <div>
+    <%= form.label :max_guests, "Nombre maximum de personnes" %>
+    <%= form.number_field :max_guests, min: 1, placeholder: "Nombre de personnes", required: true %>
+  </div>
+
+  <div>
+    <%= form.label :available, "Disponible" %>
+    <%= form.check_box :available %>
+  </div>
+
+  <div>
+    <%= form.submit "Mettre à jour", class: "btn btn-primary" %>
+  </div>
+<% end %>
+
+<%= link_to 'Annuler', flat_path(@flat), class: "btn btn-secondary" %>
